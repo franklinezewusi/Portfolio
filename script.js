@@ -4,8 +4,6 @@ const navLinks = document.querySelector('.nav-links');
 
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
-    
-    // Animate hamburger
     hamburger.classList.toggle('active');
 });
 
@@ -13,6 +11,7 @@ hamburger.addEventListener('click', () => {
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
     });
 });
 
@@ -85,13 +84,15 @@ function animateSkillBars() {
 window.addEventListener('scroll', animateSkillBars);
 animateSkillBars();
 
-// Contact form submission
+// Contact form submission (Formspree)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your message, Franklin will get back to you soon!');
-        contactForm.reset();
+        // Do NOT use e.preventDefault() here anymore!
+        // Let Formspree handle the redirect.
+        
+        // Show a friendly message while redirecting happens
+        alert('Sending message... You will be redirected shortly.');
     });
 }
 
